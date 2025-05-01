@@ -1,6 +1,6 @@
 from os.path import join
 import sys
-import matplotlib.pyplot as plt
+
 import cupy as cp
 
 def load_data(load_dir, bid):
