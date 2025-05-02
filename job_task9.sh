@@ -16,8 +16,9 @@
 #BSUB -B
 #BSUB -N
 
+nvidia-smi
 
 source /dtu/projects/02613_2025/conda/conda_init.sh
 conda activate 02613
 
-time python task_9.py 10
+python task_9.py 10 >> results.dat
