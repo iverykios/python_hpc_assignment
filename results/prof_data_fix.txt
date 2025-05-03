@@ -1,0 +1,148 @@
+Generating SQLite file jacobi_prof_fix.sqlite from jacobi_prof_fix.nsys-rep
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/nvtxsum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain NV Tools Extension (NVTX) data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/osrtsum.py]... 
+
+ ** OS Runtime Summary (osrtsum):
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  -------------  --------  -----------  ------------  ----------------------
+     50.0     201663660696       2024    99636196.0    100149992.0      1283    141484902     6946888.7  poll                  
+     49.9     201506864903         21  9595564995.4  10031032283.0  17024302  11601048893  2227009286.4  sem_wait              
+      0.1        241814061        948      255078.1       237604.5      1249      3485035      171293.7  open64                
+      0.0         99660946        504      197740.0        12414.5      1035     17612028      861906.5  ioctl                 
+      0.0         48121822        662       72691.6         3254.5      1408       531693      126426.9  fopen                 
+      0.0         21759773        299       72775.2        84854.0      1003       235293       71041.5  fclose                
+      0.0         17386333        103      168799.3        35020.0      2599       410310      148223.4  fread                 
+      0.0         11655286        887       13140.1         2883.0      1041       372744       23969.7  read                  
+      0.0          2042067        593        3443.6         2766.0      1018        96795        4394.9  getc                  
+      0.0          1715747        291        5896.0         1248.0      1019       793641       47082.3  mmap64                
+      0.0          1365889        304        4493.1         1236.5      1003        35321        6004.3  fgets                 
+      0.0           938373          4      234593.3       230404.0     41732       435833      220931.4  pthread_create        
+      0.0           703814        263        2676.1         1935.0      1733        10493        1583.1  munmap                
+      0.0           615911          8       76988.9         3372.5      2072       467928      163688.7  fopen64               
+      0.0           393014          8       49126.8        44571.0     12930        92111       36395.7  sem_timedwait         
+      0.0           389047         26       14963.3         8414.5      3087       115315       22646.9  mmap                  
+      0.0           213222         19       11222.2        10858.0      1335        26445        7530.8  write                 
+      0.0           163811          1      163811.0       163811.0    163811       163811           0.0  pthread_cond_wait     
+      0.0            44218          7        6316.9         4719.0      2062        16346        5309.9  pthread_cond_signal   
+      0.0            41381          6        6896.8         7746.0      2902        10812        2986.8  pipe2                 
+      0.0            32193          1       32193.0        32193.0     32193        32193           0.0  waitpid               
+      0.0            23302          6        3883.7         4547.5      1265         5133        1543.0  open                  
+      0.0            18371         15        1224.7         1186.0      1010         1708         202.5  fcntl                 
+      0.0            15990          2        7995.0         7995.0      5000        10990        4235.6  socket                
+      0.0            10022          1       10022.0        10022.0     10022        10022           0.0  connect               
+      0.0             5853          2        2926.5         2926.5      1437         4416        2106.5  fflush                
+      0.0             5094          3        1698.0         1231.0      1134         2729         894.2  signal                
+      0.0             4663          2        2331.5         2331.5      1864         2799         661.1  pthread_cond_broadcast
+      0.0             3686          2        1843.0         1843.0      1293         2393         777.8  fwrite                
+      0.0             2943          2        1471.5         1471.5      1251         1692         311.8  sigaction             
+      0.0             2719          1        2719.0         2719.0      2719         2719           0.0  fputs                 
+      0.0             1255          1        1255.0         1255.0      1255         1255           0.0  bind                  
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/cudaapisum.py]... 
+
+ ** CUDA API Summary (cudaapisum):
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)    Med (ns)   Min (ns)  Max (ns)   StdDev (ns)              Name            
+ --------  ---------------  ---------  ----------  ----------  --------  ---------  -----------  ----------------------------
+     99.3     193853047317      16511  11740842.3  11887907.0      6975   11923727    1302250.6  cudaMemcpyAsync             
+      0.5        965390077     163161      5916.8      5678.0      4557      38287       1111.2  cuLaunchKernel              
+      0.1        180693796      32622      5539.0      5964.0      3777      61009       1405.4  cudaLaunchKernel            
+      0.1        113163191         13   8704860.8    234170.0     63437  107625051   29728993.2  cudaMalloc                  
+      0.0         31533825      16311      1933.3      1852.0      1641      18281        391.5  cudaStreamSynchronize       
+      0.0         14320590      16411       872.6       861.0       719      17218        195.9  cudaStreamIsCapturing_v10000
+      0.0          5274204         11    479473.1    189480.0    122380    2568998     717588.7  cuModuleLoadData            
+      0.0          2683084          2   1341542.0   1341542.0   1039021    1644063     427829.3  cudaHostAlloc               
+      0.0          1562971          1   1562971.0   1562971.0   1562971    1562971          0.0  cudaMemGetInfo              
+      0.0           538788          5    107757.6     91723.0     67139     186912      48674.5  cuModuleUnload              
+      0.0           480749         50      9615.0      8878.0      8150      31410       3399.3  cudaMemsetAsync             
+      0.0           479015        199      2407.1      1977.0       761       5553       1374.9  cudaEventQuery              
+      0.0           341779        100      3417.8      3185.5      2925      12580       1107.6  cudaEventRecord             
+      0.0           224399        100      2244.0      2127.5      1648      10722        905.0  cudaEventCreateWithFlags    
+      0.0           179985         99      1818.0      1780.0      1640       2554        151.2  cudaEventDestroy            
+      0.0            89931        384       234.2       193.0       129       1153        136.4  cuGetProcAddress            
+      0.0             3047          1      3047.0      3047.0      3047       3047          0.0  cuInit                      
+      0.0             2483          2      1241.5      1241.5       175       2308       1508.3  cuModuleGetLoadingMode      
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/gpukernsum.py]... 
+
+ ** CUDA GPU Kernel Summary (gpukernsum):
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)      GridXYZ          BlockXYZ                                                     Name                                                
+ --------  ---------------  ---------  ---------  ---------  --------  --------  -----------  ----------------  --------------  ----------------------------------------------------------------------------------------------------
+     40.1      79646797662      48933  1627670.4  1833551.0   1205899   1843151     293085.7  102400    1    1   128    1    1  cupy_add__float64_float64_float64                                                                   
+     15.1      29941791833      16311  1835680.9  1835727.0   1828208   1844687       2004.9  102400    1    1   128    1    1  cupy_subtract__float64_float64_float64                                                              
+     10.5      20946728873      16311  1284208.7  1284203.0   1278314   1291883       1580.1  102400    1    1   128    1    1  cupy_where__bool_float64_float_float64                                                              
+      9.9      19639883464      16311  1204088.3  1204106.0   1197994   1215786       1670.2  102400    1    1   128    1    1  cupy_absolute__float64_float64                                                                      
+      9.9      19639184284      16311  1204045.4  1204010.0   1197642   1211018       1668.2  102400    1    1   128    1    1  cupy_multiply__float_float64_float64                                                                
+      6.1      12165367217      16311   745838.2   745830.0    743302    749926        695.7  102400    1    1   128    1    1  cupy_copy_where__float64_bool_float64                                                               
+      4.8       9478077814      16311   581085.0   581060.0    578245    588708       1032.0   420    1    1     256    1    1  void cub::CUB_200200_350_370_500_520_600_610_700_750_800_860_890_900_NS::DeviceReduceKernel<cub::CU…
+      3.5       7036533147      16311   431398.0   431395.0    429187    439012        622.7  102400    1    1   128    1    1  cupy_copy__bool_bool                                                                                
+      0.0         81223530      16311     4979.7     4928.0      4512     10912        151.2     1    1    1     256    1    1  void cub::CUB_200200_350_370_500_520_600_610_700_750_800_860_890_900_NS::DeviceReduceSingleTileKern…
+      0.0         60930254      16311     3735.5     3680.0      3296      5376        120.7     1    1    1       1    1    1  cupy_less__float64_float_bool                                                                       
+      0.0          1213226          1  1213226.0  1213226.0   1213226   1213226          0.0  103202    1    1   128    1    1  cupy_copy__float64_float64                                                                          
+      0.0           905287         50    18105.7    18208.0     12832     19040        839.0  2048    1    1     128    1    1  cupy_copy__float64_float64                                                                          
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/gpumemtimesum.py]... 
+
+ ** GPU MemOps Summary (by Time) (gpumemtimesum):
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)      Operation     
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ------------------
+     70.6         27408430  16311    1680.4    1632.0      1279      7616        125.9  [CUDA memcpy DtoH]
+     25.6          9915149    100   99151.5   99040.5     23648    187137      75538.4  [CUDA memcpy HtoD]
+      2.7          1037032    100   10370.3   10272.0      5856     15104       3960.4  [CUDA memcpy DtoD]
+      1.1           434080     50    8681.6    8496.0      8063     10528        504.8  [CUDA memset]     
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/gpumemsizesum.py]... 
+
+ ** GPU MemOps Summary (by Size) (gpumemsizesum):
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)      Operation     
+ ----------  -----  --------  --------  --------  --------  -----------  ------------------
+    118.786    100     1.188     1.188     0.262     2.114        0.930  [CUDA memcpy DtoD]
+    117.965    100     1.180     1.180     0.262     2.097        0.922  [CUDA memcpy HtoD]
+    105.678     50     2.114     2.114     2.114     2.114        0.000  [CUDA memset]     
+      0.016  16311     0.000     0.000     0.000     0.000        0.000  [CUDA memcpy DtoH]
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/openmpevtsum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain OpenMP event data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/khrdebugsum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain KHR Extension (KHR_DEBUG) data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/khrdebuggpusum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/vulkanmarkerssum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/vulkangpumarkersum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/dx11pixsum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain DX11 CPU debug markers.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/dx12gpumarkersum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain DX12 GPU debug markers.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/dx12pixsum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain DX12 CPU debug markers.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/wddmqueuesdetails.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain WDDM context data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/unifiedmemory.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/unifiedmemorytotals.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/umcpupagefaults.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [jacobi_prof_fix.sqlite] with [/appl/cuda/11.8.0/nsight-systems-2022.4.2/host-linux-x64/reports/openaccsum.py]... 
+SKIPPED: jacobi_prof_fix.sqlite does not contain OpenACC event data.
+
