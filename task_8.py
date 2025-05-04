@@ -66,14 +66,13 @@ if __name__ == '__main__':
         all_u[i] = u
         cuda.synchronize()
 
-    elapsed_time_ms = time.time() - start
+    elapsed_time = time.time() - start
 
-    print(f"GPU Time for {N} floorplans: {elapsed_time_ms:.2f} ms")
-    print(f"Avg time per floorplan: {elapsed_time_ms/N:.2f} ms")
+    print(f"GPU Time for {N} floorplans: {elapsed_time:.2f} seconds")
+    print(f"Avg time per floorplan: {elapsed_time/N:.2f} seconds")
 
     TOTAL_FLOORPLANS = 4571
 
-    estimated_total_ms = (elapsed_time_ms / N) * TOTAL_FLOORPLANS
-    estimated_total_sec = estimated_total_ms / 1000
+    estimated_total_ms = (elapsed_time / N) * TOTAL_FLOORPLANS
 
-    print(f"\nEstimated total time for processing {TOTAL_FLOORPLANS} floorplans: {estimated_total_sec:.2f} seconds")
+    print(f"\nEstimated total time for processing {TOTAL_FLOORPLANS} floorplans: {estimated_total:.2f} seconds")
