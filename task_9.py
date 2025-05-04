@@ -1,5 +1,6 @@
 from os.path import join
 import sys
+import time
 
 import cupy as cp
 
@@ -50,19 +51,14 @@ if __name__ == '__main__':
     MAX_ITER = 20_000
     ABS_TOL = 1e-4
 
-    start_event = cp.cuda.Event()
-    end_event = cp.cuda.Event()
-    start_event.record()
-
+    start = time.time()
 
     all_u = cp.empty_like(all_u0)
     for i, (u0, interior_mask) in enumerate(zip(all_u0, all_interior_mask)):
         u = jacobi(u0, interior_mask, MAX_ITER, ABS_TOL)
         all_u[i] = u
     
-    end_event.record()
-    end_event.synchronize()
-    elapsed_time_ms = cp.cuda.get_elapsed_time(start_event, end_event)
+    elapsed_time_ms = time.time() - start
 
     print(f"GPU Time for {N} floorplans: {elapsed_time_ms:.2f} ms")
     print(f"Avg time per floorplan: {elapsed_time_ms/N:.2f} ms")
