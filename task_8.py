@@ -73,6 +73,6 @@ if __name__ == '__main__':
 
     TOTAL_FLOORPLANS = 4571
 
-    estimated_total_ms = (elapsed_time / N) * TOTAL_FLOORPLANS
+    estimated_total = (elapsed_time / N) * TOTAL_FLOORPLANS
 
     print(f"\nEstimated total time for processing {TOTAL_FLOORPLANS} floorplans: {estimated_total:.2f} seconds")
