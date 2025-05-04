@@ -1,19 +1,24 @@
-#!/bin/bash
-#BSUB -J models
-#BSUB -q hpc
-#BSUB -R "rusage[mem=16GB]"
-#BSUB -o outputv_task_2.out  
-#BSUB -e errorv_task_2.err  
-#BSUB -W 24:00    
-#BSUB -n 16
+#!/bin/sh
+
+#BSUB -q c02613
+#BSUB -J ref_mes
+
+#BSUB -n 1
 #BSUB -R "span[hosts=1]"
 
-# Initialize and activate environment
-source /dtu/projects/02613_2024/conda/conda_init.sh
+#BSUB -R "rusage[mem=2GB]"
+#BSUB -R "select[model == XeonGold6226R]"
+#BSUB -W 00:30
+
+#BSUB -o ref_mes_%J.out
+#BSUB -e ref_mes_%J.err
+
+#BSUB -B
+#BSUB -N
+
+lscpu -C
+
+source /dtu/projects/02613_2025/conda/conda_init.sh
 conda activate 02613
 
-module swap cuda/12.3.2
-module swap cudnn/v9.3.0.75-prod-cuda-12.X
-
-export XLA_FLAGS="--xla_gpu_cuda_data_dir=$CUDA_ROOT"
-time python3    HPC_project/task2.py 10
+python ../task_2.py 10 >> results_task2.dat

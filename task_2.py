@@ -24,19 +24,6 @@ def jacobi(u, interior_mask, max_iter, atol=1e-6):
             break
     return u
 
-def summary_stats(u, interior_mask):
-    u_interior = u[1:-1, 1:-1][interior_mask]
-    mean_temp = u_interior.mean()
-    std_temp = u_interior.std()
-    pct_above_18 = np.sum(u_interior>18)/u_interior.size*100
-    pct_below_15 = np.sum(u_interior<15)/u_interior.size*100
-    return{
-        'mean_temp':mean_temp,
-        'std_temp':std_temp,
-        'pct_above_18':pct_above_18,
-        'pct_below_15':pct_below_15,
-    }
-
 if __name__ == '__main__':
     # Load data
     LOAD_DIR = '/dtu/projects/02613_2025/data/modified_swiss_dwellings/'
@@ -60,14 +47,20 @@ if __name__ == '__main__':
     MAX_ITER = 20_000
     ABS_TOL = 1e-4
 
+    start = time.time()
     all_u = np.empty_like(all_u0)
     for i, (u0,interior_mask) in enumerate(zip(all_u0, all_interior_mask)):
         u = jacobi(u0, interior_mask, MAX_ITER, ABS_TOL)
         all_u[i] = u
 
-    # Print summary statistics in CSV format
-    stat_keys = ['mean_temp', 'std_temp', 'pct_above_18', 'pct_below_15']
-    print('building_id, '+','.join(stat_keys)) #CSV header
-    for bid,u, interior_mask in zip(building_ids, all_u, all_interior_mask):
-        stats = summary_stats(u, interior_mask)
-        print(f"{bid},", ",".join(str(stats[k]) for k in stat_keys))
+    elapsed_time_ms = time.time() - start
+
+    print(f"CPU Time for {N} floorplans: {elapsed_time_ms:.2f} ms")
+    print(f"Avg time per floorplan: {elapsed_time_ms/N:.2f} ms")
+
+    TOTAL_FLOORPLANS = 4571
+
+    estimated_total_ms = (elapsed_time_ms / N) * TOTAL_FLOORPLANS
+    estimated_total_sec = estimated_total_ms / 1000
+
+    print(f"\nEstimated total time for processing {TOTAL_FLOORPLANS} floorplans: {estimated_total_sec:.2f} seconds")
